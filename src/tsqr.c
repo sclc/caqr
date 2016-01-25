@@ -14,7 +14,7 @@ int main (int argc, char** argv)
 	ierr = MPI_Comm_rank(MPI_COMM_WORLD, &myid);
 	ierr = MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
 
-	//if (myid == 0) printf ("%d process in total",numprocs);
+	if (myid == 0) printf ("%d process in total",numprocs);
 	//printf ("myid=%d \n",myid);
 	//printf ("in mainf numprocs=%d\n",numprocs);
 	//binaryAllReduceButterflyPrototype(myid, numprocs);
@@ -26,19 +26,19 @@ int main (int argc, char** argv)
         char filenameContainer[buffersize];
         if (filenameLen>buffersize) {printf("too long file name\n");exit(1);}
 
-        numRows = atof(argv[2]);
-        numCols = atof(argv[3]);
+        numRows = atoi(argv[2]);
+        numCols = atoi(argv[3]);
 
         strcpy (filenameContainer, argv[1]);
 	denseType localMatrix;
 	dataDist_rowMajor(&localMatrix, numRows, numCols, filenameContainer, myid, numprocs);
         //if(myid == 2) {printMatrix (localMatrix, myid, numprocs);}
         //printMatrix (localMatrix, myid, numprocs);
-	printf ("myid:%d, start from Rows:%d\n", myid, localMatrix.start_idx);
+	//printf ("myid:%d, start from Rows:%d\n", myid, localMatrix.start_idx);
 
 	//call tsqr allreduction routines
 	int expCounter;
-	int totalExp = 50;
+	int totalExp = 10;
 	double elapsedTimeAccmulator = 0.0;
 	double elapsedCommTimeAccmulator=0.0;
 
@@ -95,3 +95,4 @@ int main (int argc, char** argv)
 
 	ierr = MPI_Finalize();
 }
+

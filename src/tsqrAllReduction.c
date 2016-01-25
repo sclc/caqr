@@ -202,7 +202,7 @@ void tsqrAllReduction_rowOrder_butterFly_raw (denseType localA, denseType finalQ
 		//clock_gettime(CLOCK_MONOTONIC, &allreduceFinish);
     	allreduceCommTime = (allreduceFinish.tv_sec - allreduceStart.tv_sec);
     	allreduceCommTime += (allreduceFinish.tv_nsec - allreduceStart.tv_nsec) / 1000000000.0;
-    	//printf ("%f sec eplapsed\n", elapsed);
+    	//if (myid == 0) printf ("%20.18f sec eplapsed\n", elapsed);
     	allreduceCommTimeAccumulator += allreduceCommTime;
 	}
 

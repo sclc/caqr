@@ -5,5 +5,5 @@
 #include "mpi.h"
 //#include "common.h"
 #include "tsqrAllReduction.h"
-#include <papi.h>
+//#include <papi.h>
 
