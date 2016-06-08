@@ -1,0 +1,2 @@
+# caqr
+Communication-avoiding QR
